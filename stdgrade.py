@@ -1,35 +1,32 @@
 import sys
 
-def calculate_average_and_grade(m1, m2, m3, m4, m5):
-    total = m1 + m2 + m3 + m4 + m5
-    average = total / 5
+# If user gives 5 marks as arguments, use them
+if len(sys.argv) == 6:
+    m1 = float(sys.argv[1])
+    m2 = float(sys.argv[2])
+    m3 = float(sys.argv[3])
+    m4 = float(sys.argv[4])
+    m5 = float(sys.argv[5])
+else:
+    # Default marks (if no input given)
+    print("No input provided. Using default marks: 80, 75, 90, 85, 70")
+    m1, m2, m3, m4, m5 = 80, 75, 90, 85, 70
 
-    # Determine grade based on average
-    if average >= 90:
-        grade = 'A'
-    elif average >= 80:
-        grade = 'B'
-    elif average >= 70:
-        grade = 'C'
-    elif average >= 60:
-        grade = 'D'
-    else:
-        grade = 'F'
+# Calculate average
+avg = (m1 + m2 + m3 + m4 + m5) / 5
 
-    print(f"Average Marks: {average:.2f}")
-    print(f"Grade: {grade}")
+# Determine grade
+if avg >= 90:
+    grade = 'A'
+elif avg >= 75:
+    grade = 'B'
+elif avg >= 60:
+    grade = 'C'
+elif avg >= 40:
+    grade = 'D'
+else:
+    grade = 'Fail'
 
-# Check if user provided exactly 5 marks
-if len(sys.argv) != 6:
-    print("Usage: python program.py <mark1> <mark2> <mark3> <mark4> <mark5>")
-    sys.exit(1)
-
-# Convert command-line arguments to floats
-m1 = float(sys.argv[1])
-m2 = float(sys.argv[2])
-m3 = float(sys.argv[3])
-m4 = float(sys.argv[4])
-m5 = float(sys.argv[5])
-
-# Function call
-calculate_average_and_grade(m1, m2, m3, m4, m5)
+# Display output
+print("Average Marks:", avg)
+print("Grade:", grade)
